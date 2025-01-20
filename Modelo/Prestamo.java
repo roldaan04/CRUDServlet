@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "prestamo")
 public class Prestamo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -73,7 +74,9 @@ public class Prestamo {
     }
 
     public void setFechaInicio(LocalDate fechaInicio) {
+
         this.fechaInicio = fechaInicio;
+        this.fechaDevolucion= fechaInicio.plusDays(15);
     }
 
     public LocalDate getFechaDevolucion() {
